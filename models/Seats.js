@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     seats_category: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'seats_category',
+        model: 'SeatsCategory',
         key: 'id'
       },
       allowNull: false

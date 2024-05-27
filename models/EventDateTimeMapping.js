@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     event_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'events',
+        model: 'Event',
         key: 'id'
       },
       allowNull: false
