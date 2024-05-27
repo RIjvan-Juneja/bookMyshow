@@ -15,7 +15,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'EventCategory',
-    tableName: 'event_categories',
     timestamps: false
   });
   return EventCategory;

@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     date_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'date_time',
+        model: 'DateTime',
         key: 'id'
       },
       allowNull: false
@@ -31,7 +31,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'EventDateTimeMapping',
-    tableName: 'event_date_time_mapping',
     timestamps: false
   });
   return EventDateTimeMapping;

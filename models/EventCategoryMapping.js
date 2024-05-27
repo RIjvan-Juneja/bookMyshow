@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
     category_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'event_categories',
+        model: 'EventCategory',
         key: 'id'
       },
       allowNull: false
@@ -31,7 +31,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'EventCategoryMapping',
-    tableName: 'event_category_mapping',
     timestamps: false
   });
   return EventCategoryMapping;

@@ -18,7 +18,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Permission',
-    tableName: 'permissions',
     timestamps: false
   });
   return Permission;

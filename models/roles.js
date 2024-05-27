@@ -13,14 +13,13 @@ module.exports = (sequelize, DataTypes) => {
   Role.init({
     name: DataTypes.STRING,
     description: DataTypes.STRING,
-    createdAt: {
+    created_at: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW
     }
   }, {
     sequelize,
     modelName: 'Role',
-    tableName: 'roles',
     timestamps: false
   });
   return Role;

@@ -24,7 +24,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'EventAttachment',
-    tableName: 'event_attachments',
     timestamps: false
   });
   return EventAttachment;

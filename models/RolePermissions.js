@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     permission_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'permissions',
+        model: 'Permissions',
         key: 'id'
       }
     },
@@ -29,7 +29,6 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'RolePermission',
-    tableName: 'role_permissions',
     timestamps: false
   });
   return RolePermission;
