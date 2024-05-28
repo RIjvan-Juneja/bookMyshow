@@ -1,3 +1,5 @@
+// event may be Movies, Singing , ..., etc
+
 Table roles {
   id INT [pk, increment]
   name VARCHAR
