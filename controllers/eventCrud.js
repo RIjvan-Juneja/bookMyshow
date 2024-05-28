@@ -1,5 +1,4 @@
 const db = require("../models/index");
-const Event = db.Event;
 
 const addEvent = async (req,res) =>{
   const t = await db.sequelize.transaction();
@@ -12,11 +11,17 @@ const addEvent = async (req,res) =>{
       name : (req.body.name)? req.body.name : null,
       description : (req.body.description)? req.body.description : null
     }
-    await Event.create(eventData,{ transaction: t });
-   
-
+    const eventInsert = await db.Event.create(eventData,{ transaction: t });
+    await db.EventCategoryMapping.create({event_id : eventInsert.id , category_id : req.body.category_id },{ transaction: t });
+    await db.EventDateTimeMapping.create({event_id : eventInsert.id , date_id : req.body.edt_id },{ transaction: t });
     
-
+    let files = req.body.files;
+    const filePromises = files.map(file => {
+      return db.EventAttachment.create({ event_id : eventInsert.id , attachment_path : file.filename, file_type : file.mimetype  }, { transaction: t });
+    });
+    
+    await Promise.all(filePromises);
+    
     await t.commit();
     res.status(200).send({status : "ok", msg : "Vanue created Successfully"});
   } catch (err) {
