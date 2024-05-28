@@ -1,27 +1,26 @@
 const db = require("../models/index");
 const Event = db.Event;
 
-const addVanue = async (req,res) =>{
+const addEvent = async (req,res) =>{
+  const t = await db.sequelize.transaction();
   try {
     
     const userId = 1;
-    // create vanue 
-    const obj = {
-      user_id : (userId)? userId : 0,
+    const eventData = {
+      user_id : (userId)? userId : null,
+      vanue_id : (req.body.vanue_id)? req.body.vanue_id : null,
       name : (req.body.name)? req.body.name : null,
-      address : (req.body.address)? req.body.address : null,
-      city : (req.body.city)? req.body.city : null,
-      state : (req.body.state)? req.body.state : null,
-      zipcode : (req.body.zipcode)? req.body.zipcode : null,
-      capacity : (req.body.capacity)? req.body.capacity : null,
+      description : (req.body.description)? req.body.description : null
     }
-
-    // console.log(db,Event);
-    await Event.create(obj);
+    await Event.create(eventData,{ transaction: t });
    
+
+    
+
+    await t.commit();
     res.status(200).send({status : "ok", msg : "Vanue created Successfully"});
   } catch (err) {
-    console.log(err);
+    await t.rollback();
     res.status(500).send({status : "Internal Server Error", msg : "An unexpected error occurred while processing your request"});
   }
 }
@@ -51,7 +50,6 @@ const updateVanue = async (req,res) =>{
         user_id : userId
       }
     });
-    console.log(checkHasVanue);
     if(checkHasVanue.length > 0){
       const obj = {
         user_id : (req.body.user_id)? req.body.user_id : 0,

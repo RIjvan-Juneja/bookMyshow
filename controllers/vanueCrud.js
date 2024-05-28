@@ -7,7 +7,7 @@ const addVanue = async (req,res) =>{
     const userId = 1;
     // create vanue 
     const obj = {
-      user_id : (userId)? userId : 0,
+      user_id : (userId)? userId : null,
       name : (req.body.name)? req.body.name : null,
       address : (req.body.address)? req.body.address : null,
       city : (req.body.city)? req.body.city : null,
