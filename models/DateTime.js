@@ -7,8 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   DateTime.init({
-    start: DataTypes.DateTime,
-    end: DataTypes.DateTime,
+    start: DataTypes.DATE,
+    end: DataTypes.DATE,
     created_at: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW

@@ -23,8 +23,6 @@ module.exports = (sequelize, DataTypes) => {
       gender: DataTypes.STRING,
       email: {
         type: DataTypes.STRING,
-        allowNull: false,
-        unique: true
       },
       mobile_number: DataTypes.STRING,
       salt: DataTypes.STRING,
@@ -41,6 +39,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       updatedAt : 'updated_at',
       modelName: 'User',
+      tableName : 'User',
       timestamps: false
     });
     return User;
