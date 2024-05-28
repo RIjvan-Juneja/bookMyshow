@@ -1,0 +1,1 @@
+dbdiagram : https://dbdiagram.io/d/BookMyShow-665010fcf84ecd1d22051980
