@@ -1,10 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const userCrud = require("../controllers/userCrud");
-const vanueCrud = require("../controllers/vanueCrud");
-const eventCrud = require("../controllers/eventCrud");
-const movie = require("../controllers/getMovies");
+const userCrud = require("../controllers/userCrud.controller");
+const vanueCrud = require("../controllers/vanueCrud.controller");
+const eventCrud = require("../controllers/eventCrud.controller");
+const movie = require("../controllers/getMovies.controller");
+const Booking = require("../controllers/bookTicket.controller");
 
 router.get('/',(req,res)=>{
     res.send("Home Page");
@@ -29,5 +30,8 @@ router.post('/updateEvent/:id',eventCrud.updateEvent);
 router.get('/getAllMovies',movie.getAllMovies);
 router.get('/cityWiseMovies',movie.cityWiseMovies);
 router.get('/nowMovies',movie.nowMovies);
+
+router.post('/bookTicket',Booking.bookSeat);
+
 
 module.exports = router;
