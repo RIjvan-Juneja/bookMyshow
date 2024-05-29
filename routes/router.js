@@ -33,5 +33,4 @@ router.get('/nowMovies',movie.nowMovies);
 
 router.post('/bookTicket',Booking.bookSeat);
 
-
 module.exports = router;

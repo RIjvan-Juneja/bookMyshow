@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('permissions', [
+  async up (queryInterface, Sequelize) {
+    await queryInterface.bulkInsert('Permissions', [
       { api: '/addUser', created_at: new Date() },
       { api: '/fetchUsers', created_at: new Date() },
       { api: '/fetchUser/:id', created_at: new Date() },
@@ -19,7 +19,7 @@ module.exports = {
     ], {});
   },
 
-  down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('permissions', null, {});
+  async down (queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('Permissions', null, {});
   }
 };
